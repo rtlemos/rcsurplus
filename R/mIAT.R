@@ -1,0 +1,3 @@
+.IAT <- setRefClass(
+    Class = '.IAT'
+)
