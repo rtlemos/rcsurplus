@@ -105,8 +105,11 @@ shinyUI(navbarPage(
                             h4("Convergence diagnostics"),
                             checkboxInput("do_coda", "CODA", FALSE),
                             h4("Model Status"),
-                            bsAlert(inputId = "model_inputId"),
-                            bsActionButton('fit_model', label = "Fit model(s)", style = "info", size="mini"),
+                            bsAlert(anchorId = "model_inputId"),
+                            bsButton('fit_model', 
+                                     label = "Fit model(s)", 
+                                     style = "info", 
+                                     size="mini"),
                             verbatimTextOutput('model_status')
                      )
                  )

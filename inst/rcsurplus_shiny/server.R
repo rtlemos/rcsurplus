@@ -12,21 +12,28 @@ shinyServer(function(input, output, session) {
     })
     
     output$model_status <- renderPrint({
-        if(any(input$Kprior>0) | any(input$rprior>0) | any(input$qprior>0) | any(input$sprior>0) |
+        if(any(input$Kprior>0) | any(input$rprior>0) | any(input$qprior>0) | 
+           any(input$sprior>0) |
            input$MCMCn>0 | input$MCMCb>0 | input$MCMCt>0 | input$MCMCc>0 | 
            length(input$spm) == 0 | input$do_coda){
-            createAlert(session, inputId = "model_inputId", alertId = "model_alertId", 
-                        message = "Model(s) not fitted.", 
-                        type = "danger", dismiss = FALSE, block = FALSE, append = FALSE )
+            closeAlert(session = session, "model_alertId")
+            createAlert(session, anchorId = "model_inputId", 
+                        alertId = "model_alertId", 
+                        content = "Model(s) not fitted.", 
+                        style = "danger", dismiss = FALSE, append = FALSE )
         }
         if(input$fit_model > m$fit_counter){
-            createAlert(session, inputId = "model_inputId", alertId = "model_alertId", 
-                        message = "Fitting model(s), please wait.", 
-                        type = "warning", dismiss = FALSE, block = TRUE, append = FALSE )
+            closeAlert(session = session, "model_alertId")
+            createAlert(session, anchorId = "model_inputId", 
+                        alertId = "model_alertId", 
+                        content = "Fitting model(s), please wait.", 
+                        style = "warning", dismiss = FALSE, append = FALSE )
             ok <- m$fit_models(input)
-            createAlert(session, inputId = "model_inputId", alertId = "model_alertId", 
-                        message = "Model(s) fitted.", 
-                        type = "success", dismiss = FALSE, block = FALSE, append = FALSE )
+            closeAlert(session = session, "model_alertId")
+            createAlert(session, anchorId = "model_inputId", 
+                        alertId = "model_alertId", 
+                        content = "Model(s) fitted.", 
+                        style = "success", dismiss = FALSE, append = TRUE)
         }
     })
     
