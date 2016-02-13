@@ -1,0 +1,18 @@
+Package: rcsurplus
+Title: Reference class surplus production model
+Version: 0.1
+Date: 2014-09-01
+Description: First attempt to construct the rcsurplus package.
+Depends:
+    R (>= 3.1.1),
+    shiny,
+    shinyBS,
+    ggplot2,
+    grid,
+    R2OpenBUGS,
+    coda
+License: GPL-2
+LazyData: true
+Authors@R: c(person("Ricardo", "T. Lemos", role = c("aut", "cre"), email = "rtl00@yahoo.com"))
+Author: Ricardo T. Lemos
+Maintainer: Ricardo T. Lemos <rtl00@yahoo.com>
